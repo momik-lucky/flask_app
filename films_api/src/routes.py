@@ -1,9 +1,10 @@
 from datetime import datetime
-from typing import List
+
 from flask import request
 from flask_restful import Resource
-from src.app import api, db
+
 import src.models as models
+from src.app import api, db
 
 
 class Smoke(Resource):
@@ -14,9 +15,9 @@ class Smoke(Resource):
 class FilmListApi(Resource):
     def get(self, uuid=None):
         if not uuid:
-            films = db.session.guery(models.Film).all()
+            films = db.session.query(models.Film).all()
             return [f.to_dict() for f in films], 200
-        film = db.session.guery(models.Film).filter_by(uuid=uuid).first()
+        film = db.session.query(models.Film).filter_by(uuid=uuid).first()
         if not film:
             return '', 404
         return film.to_dict(), 200
