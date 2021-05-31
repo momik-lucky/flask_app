@@ -1,7 +1,7 @@
 from datetime import date
 
 from src.app import db
-from src.models import Film
+from src.database.models import Film, Actor
 
 
 def populate_films():
@@ -69,6 +69,13 @@ def populate_films():
         length=161,
         rating=7.6,
     )
+
+    daniel_radcliffe = Actor(name='Daniel Radcliffe', birthday=date(1989, 7, 23), is_active=True)
+    emma_watson = Actor(name='Emma Watson', birthday=date(1990, 4, 15), is_active=True)
+    rupert_grint = Actor(name='Rupert Grint', birthday=date(1988, 9, 24), is_active=True)
+    richard_harris = Actor(name='Richard Harris', birthday=date(1939, 10, 1), is_active=True)
+    michael_gambon = Actor(name='Michael Gambon', birthday=date(1940, 10, 19), is_active=True)
+    alan_rickman = Actor(name='Alan Rickman', birthday=date(1946, 2, 21), is_active=True)
 
     db.session.add(harry_potter_and_ph_stone)
     db.session.add(harry_potter_and_ch_s)
