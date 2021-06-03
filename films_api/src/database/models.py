@@ -20,7 +20,7 @@ class Film(db.Model):
     distributed_by = db.Column(db.String(120), nullable=False)
     length = db.Column(db.Float)
     rating = db.Column(db.Float)
-    actors = db.relationship('Actor', secondary=movies_actors, lazy='subquery', backref=db.backref('films', lazy=True))
+    actors = db.relationship('Actor', secondary=movies_actors, lazy=True, backref=db.backref('films', lazy=True))
 
     def __init__(self, title, release_date, description, distributed_by, length, rating, actors=None):
         self.title = title
@@ -36,7 +36,7 @@ class Film(db.Model):
             self.actors = actors
 
     def __repr__(self):
-        return f'Film({self.title}, {self.uuid}, {self.distributed_by}, {self.release_date}, {self.rating})'
+        return f'Film({self.title}, {self.uuid}, {self.distributed_by}, {self.release_date}, {self.rating}, {self.actors})'
 
 
 class Actor(db.Model):

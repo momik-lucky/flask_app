@@ -1,6 +1,7 @@
 from flask import request
 from flask_restful import Resource
 from marshmallow import ValidationError
+from sqlalchemy.orm import joinedload
 
 from src.database import models
 from src.app import db
